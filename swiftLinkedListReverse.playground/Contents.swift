@@ -13,7 +13,10 @@ class Node {
     
 }
 
-let threeNode = Node(value: 3, next: nil)
+let sixNode = Node(value: 6, next: nil)
+let fiveNode = Node(value: 5, next: sixNode)
+let fourNode = Node(value: 4, next: fiveNode)
+let threeNode = Node(value: 3, next: fourNode)
 let twoNode = Node(value: 2, next: threeNode)
 let oneNode = Node(value: 1, next: twoNode)
 
@@ -50,9 +53,62 @@ func reverseList(head: Node?) -> Node? {
     return prev
 }
 
-let myReversedList = reverseList(head: oneNode)
+//let myReversedList = reverseList(head: oneNode)
+//
+//printList(head: myReversedList)
 
-printList(head: myReversedList) // needs to print out 3,2,1
+
+
+// needs to print out 3,2,1
+
+
+
+// swap every two nodes 
+
+func swapEveryCoupleNodes(head: Node?) -> Node? {
+    var currentNode = head
+    var nextNode : Node?
+    var prevNode : Node?
+    var newHead : Node?
+    if currentNode?.next != nil {
+        print("Why")
+        newHead = currentNode?.next
+    } else {
+        
+        print("Why why")
+        newHead = currentNode
+    }
+    
+    
+    
+//    var prevNode : Node?
+    while currentNode?.next != nil {
+        nextNode = currentNode?.next
+       currentNode?.next = nextNode?.next
+        nextNode?.next = currentNode
+        if prevNode != nil {
+            prevNode?.next = nextNode
+        } else {
+        prevNode = currentNode
+        }
+        prevNode = currentNode
+        currentNode = currentNode?.next
+        
+        
+    }
+    
+    
+    
+    
+    return newHead
+    
+}
+
+let swapCoupleNodes = swapEveryCoupleNodes( head: oneNode)
+printList(head: swapCoupleNodes)
+
+
+
 
 
 
